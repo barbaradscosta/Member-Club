@@ -5,7 +5,7 @@ const Container = styled.div`
   padding: 1rem;
   border-radius: 16px;
   font-family: 'Oxygen', sans-serif;
-  max-height: 275px; /* altura total do componente */
+  max-height: 275px; 
   display: flex;
   flex-direction: column;
 `;
@@ -33,7 +33,6 @@ const ScrollArea = styled.div`
   flex: 1;
   padding-right: 0.5rem;
 
-  /* Estiliza scrollbar (opcional, só pra melhorar aparência no Chrome) */
   &::-webkit-scrollbar {
     width: 6px;
   }
