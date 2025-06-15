@@ -19,7 +19,7 @@ const ModalBox = styled.div`
   width: 90%;
   text-align: center;
   position: relative;
-  z-index: 10000; /* maior que tudo */
+  z-index: 10000;
 `;
 
 const CloseButton = styled.button`

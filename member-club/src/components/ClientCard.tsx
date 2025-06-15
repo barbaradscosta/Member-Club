@@ -7,14 +7,16 @@ const Card = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+  width: 100%; 
+  box-sizing: border-box; 
 `;
 
 const Avatar = styled.img`
   width: 56px;
   height: 56px;
   border-radius: 14px;
-  background: white; /* anel branco */
-  padding: 1px; /* espessura da borda branca */
+  background: white; 
+  padding: 1px;
   display: block;
 `;
 
@@ -26,8 +28,8 @@ const AvatarWrapper = styled.div`
     #856ccf 66.67%,
     #d65b83 100%
   );
-  padding: 2.5px; /* espessura da borda gradiente */
-  border-radius: 16px; /* maior que o da imagem pra conter a borda */
+  padding: 2.5px;
+  border-radius: 16px;
   display: inline-block;
 `;
 

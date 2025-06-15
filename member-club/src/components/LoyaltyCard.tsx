@@ -64,6 +64,10 @@ const Title = styled.div`
   font-family: "Oxygen", sans-serif;
   font-size: 12px;
   color: #333;
+
+  @media (max-width: 768px) {
+    font-size: 10px; 
+  }
 `;
 
 const IdBox = styled.div`
@@ -74,10 +78,16 @@ const IdBox = styled.div`
   font-size: 12px;
   font-weight: bold;
   color: #666;
+  
+  @media (max-width: 768px) {
+    font-size: 10px; 
+    padding: 3px 6px;
+    border-radius: 12px;
+  }
 `;
 
 const ChecksContainer = styled.div`
-  width: 100%; // ocupa todo o espaço disponível
+  width: 100%; 
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
@@ -98,6 +108,10 @@ const CheckWrapper = styled.div`
 
 const CheckIcon = styled.img`
   max-width: 64px;
+
+  @media (max-width: 768px) {
+    max-width: 50px;
+  }
 `;
 
 type Props = {

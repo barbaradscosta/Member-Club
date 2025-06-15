@@ -26,7 +26,6 @@ type Client = {
   loyaltyCard: Loyalty;
 };
 
-
 const PageWrapper = styled.div`
   font-family: "Oxygen", sans-serif;
   background: #f6f6f6;
@@ -35,10 +34,8 @@ const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%
-  
+  width: 100%;
 `;
-
 
 const Header = styled.header`
   text-align: center;
@@ -49,11 +46,11 @@ const Header = styled.header`
 `;
 
 const Logo = styled.img`
-max-width: 116px;
-`
+  max-width: 116px;
+`;
 
 const SearchWrapper = styled.div`
-border: 1px solid #D3CFD2;
+  border: 1px solid #d3cfd2;
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
@@ -64,42 +61,40 @@ border: 1px solid #D3CFD2;
   background-color: #dfdcdf;
 
   &:focus-within {
-    border: 1px solid #D658B3; 
+    border: 1px solid #d658b3;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
   }
 `;
 
 const ColumnLeft = styled.div`
-width: 100%;
-  max-width: 320px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  box-sizing: border-box;
 `;
 
 const Column = styled.div`
-width: 100%;
+  width: 100%;
   max-width: 568px;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-
 `;
-
-const ClientContent = styled.div`
-
-`
 
 const Input = styled.input`
   width: 300px;
-  outline: none; 
+  outline: none;
   border: none;
   font-size: 16px;
   background-color: #dfdcdf;
 
   &:focus {
-    color: #D658B3; 
-  border: none;
-
+    color: #d658b3;
+    border: none;
   }
 `;
 
@@ -107,39 +102,22 @@ const Button = styled.button`
   padding: 0.75rem 1rem;
   border: none;
   background: #332b31;
-  border-radius:8px;
+  border-radius: 8px;
   cursor: pointer;
   color: white;
 `;
 
 const Content = styled.div`
-   /* display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 2rem;
-  padding: 1.5rem;
-  border-radius: 16px;
-  border: 5px solid purple; */
-
-  /* display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 2rem;
-  border-radius: 16px;
-  border: 5px solid purple;
-  align-items: stretch;
-  */
-
-
   display: grid;
-  grid-template-columns: 320px 1fr; /* esquerda fixa, direita flexível */
+  grid-template-columns: 320px 1fr;
   gap: 2rem;
   border-radius: 16px;
   align-items: start;
-  justify-content: center; /* centraliza o grid no pai */
+  justify-content: center; 
 
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr; /* empilha no mobile */
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
   }
-
 `;
 
 const DivContent = styled.div`
@@ -157,17 +135,17 @@ const MainCard = styled.div`
 `;
 
 const LoyaltyContent = styled.div`
-  background: #F4F1F2;
+  background: #f4f1f2;
   border-radius: 16px;
   max-width: 568px;
 `;
 
 const ProgressBarContent = styled.div`
-  background: #F4F1F2;
+  background: #f4f1f2;
   border-radius: 16px;
   max-width: 568px;
   max-height: 117px;
-`
+`;
 
 const ErrorMsg = styled.p`
   color: red;
@@ -190,8 +168,8 @@ function App() {
       setClient(data);
 
       if (data.loyaltyCard.totalCuts >= 10) {
-  setShowCongrats(true);
-}
+        setShowCongrats(true);
+      }
 
       setError("");
     } catch (err) {
@@ -207,59 +185,61 @@ function App() {
   return (
     <PageWrapper>
       <Header>
-      <Logo src="/assets/Logo.png" />
+        <Logo src="/assets/Logo.png" />
       </Header>
 
-      
-        <SearchWrapper>
-          <Input
-            type="text"
-            placeholder="ID do cartão"
-            value={searchId}
-            onChange={(e) => setSearchId(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
-          <Button onClick={handleSearch}>
-            <ArrowElbowDownLeft size={20} />
-          </Button>
-        </SearchWrapper>
-      
+      <SearchWrapper>
+        <Input
+          type="text"
+          placeholder="ID do cartão"
+          value={searchId}
+          onChange={(e) => setSearchId(e.target.value)}
+          onKeyDown={handleKeyDown}
+        />
+        <Button onClick={handleSearch}>
+          <ArrowElbowDownLeft size={20} />
+        </Button>
+      </SearchWrapper>
 
       {error && <ErrorMsg>{error}</ErrorMsg>}
 
       {client && (
         <>
           <DivContent>
-          <Content>
-            <ColumnLeft>
-              <ClientContent>
-              <ClientCard
-                name={client.name}
-                since={client.clientSince}
-                image="/assets/Picture.png"
-              />
-              </ClientContent>
-              <MainCard>
-                <HistoryList history={client.appointmentHistory}
-                cutsRemaining={client.loyaltyCard.cutsRemaining}
-                 />
-              </MainCard>
-            </ColumnLeft>
+            <Content>
+              <ColumnLeft>
+                <>
+                  <ClientCard
+                    name={client.name}
+                    since={client.clientSince}
+                    image="/assets/Picture.png"
+                  />
+                </>
+                <MainCard>
+                  <HistoryList
+                    history={client.appointmentHistory}
+                    cutsRemaining={client.loyaltyCard.cutsRemaining}
+                  />
+                </MainCard>
+              </ColumnLeft>
 
-            <Column>
-              <LoyaltyContent>
-                <LoyaltyCard totalCuts={client.loyaltyCard.totalCuts} />
-              </LoyaltyContent>
+              <Column>
+                <LoyaltyContent>
+                  <LoyaltyCard totalCuts={client.loyaltyCard.totalCuts} />
+                </LoyaltyContent>
 
-              <ProgressBarContent>
-                <ProgressBar cutsRemaining={client.loyaltyCard.cutsRemaining} />
-              </ProgressBarContent>
-            </Column>
-          </Content>
-           </DivContent>
+                <ProgressBarContent>
+                  <ProgressBar
+                    cutsRemaining={client.loyaltyCard.cutsRemaining}
+                  />
+                </ProgressBarContent>
+              </Column>
+            </Content>
+          </DivContent>
 
-           {showCongrats && <CongratsModal onClose={() => setShowCongrats(false)} />}
-
+          {showCongrats && (
+            <CongratsModal onClose={() => setShowCongrats(false)} />
+          )}
         </>
       )}
     </PageWrapper>
